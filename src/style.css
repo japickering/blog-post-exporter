@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+:root {
+  --dark: #000;
+  --darkgrey: #333;
+  --light: #eee;
+  --success: #00aa00;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", Helvetica, sans-serif;
+  background: var(--dark);
+}
+
+code {
+  font-family: "Menlo", "Monaco", "Courier New", monospace;
+}
+
+h1 {
+  color: var(--light);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+header,
+main {
+  margin: 10px;
+}
+
+section {
+  margin: 10px 0;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #666;
+}
+
+.btn {
+  margin-left: 10px;
+  padding: 10px;
+  border: 1px solid transparent;
+  background: var(--success);
+  color: #fff;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus {
+  border: 1px solid var(--dark);
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  min-width: 600px;
+  min-height: 300px;
+  background: var(--darkgrey);
+  border: 1px solid whitesmoke;
+  color: #eee;
+  font-size: 13px;
+  resize: none;
+}
