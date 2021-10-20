@@ -1,40 +1,68 @@
-// export a blog post in markdown format
-function generateBlogPost(slug, date, title, summary, author, img, content) {
-	const h1 = "#";
-	const h2 = "##";
-	const h3 = "###";
-	const h4 = "####";
-
-	return h4 + ' slug: ' + slug + '-' + title.replace(" ", "-").toLowerCase() + '.md\n' +
-    '\n' +
-    h1 + ' ' + title + '\n' +
-		h4 + ' ' + date.toLocaleString() + '\n' +
-    h4 + ' Author: ' + author + '\n' +
-    h2 + ' ' + summary + '\n' +
-    '![alt](' + img + ')' + '\n' +
-    '\n' +
-    content;
+function setAttr(obj, val) {
+	obj.setAttribute("type", "text");
+	obj.setAttribute("name", val);
+	obj.setAttribute("placeholder", val);
+	obj.setAttribute("required", "true");
+	obj.setAttribute("aria-required", "true");
 }
 
-function setAttr (target) {
-	target.setAttribute("value", target.value);
+function buildForm(form) {
+	const container = document.createElement("div");
+	const title = document.createElement("input");
+	const author = document.createElement("input");
+	const textarea = document.createElement("textarea");
+	const submit = document.createElement("button");
+
+	container.classList.add("container");
+	setAttr(title, "title");
+	setAttr(author, "author");
+	textarea.innerHTML =
+		"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem iure nesciunt autem soluta ex hic.";
+
+	submit.setAttribute("type", "submit");
+	submit.classList.add("btn");
+	submit.innerHTML = "Create Post";
+
+	form.appendChild(title);
+	form.appendChild(author);
+	form.appendChild(textarea);
+	form.appendChild(submit);
+	container.appendChild(form);
+	document.body.appendChild(container);
 }
 
-function init() {
-	const date = new Date();
-	const slug = date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate();
-	const title = document.querySelector("#title").getAttribute("value");
-	const author = document.querySelector("#username").getAttribute("value");
-	const summary = "lorem ipsum dotor ipit amet, consectetur adipisicing elit.";
-	const img = "/assets/featured.png";
-	const content = "lorem ipsum dotor ipit amet, consectetur adipisicing elit. Temporibus in eveniet vel animi veritatis quae rerum dolorum corrupti illo maiores.";
-	const blogPost = generateBlogPost( slug, date, title, summary, author, img, content );
-
-	// output
-	console.log(blogPost);
-	document.querySelector("#output").innerHTML = blogPost;
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-	init();
-}, false);
+document.addEventListener( "DOMContentLoaded", function () {
+		const form = document.createElement("form");
+		form.setAttribute("action", "");
+		buildForm(form);
+		form.addEventListener("submit", function (e) {
+			e.preventDefault();
+			const now = new Date();
+			const slug =
+				now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate();
+			let title = document.querySelector('input[name="title"]').value;
+			let author = document.querySelector('input[name="author"]').value;
+			let img = "/assets/featured.png";
+			let body = document.querySelector("textarea").innerHTML;
+			let markdown =
+				"# " +
+				title +
+				"\n" + "\n" +
+				"## by " +
+				author +
+				"\n" + "\n" +
+				"### " +
+				slug +
+				"\n" + "\n" +
+				"![" +
+				img +
+				"](" +
+				img +
+				")" +
+				"\n" + "\n" +
+				body;
+			console.log(markdown);
+		});
+	},
+	false
+);

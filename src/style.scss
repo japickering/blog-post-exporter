@@ -50,6 +50,7 @@ section {
 }
 
 input[type="text"] {
+	margin: 4px;
 	padding: 10px;
 	border: 1px solid #eee;
 	border-radius: 4px;
@@ -80,10 +81,10 @@ input[type="text"] {
 textarea {
 	width: 100%;
 	padding: 10px;
-	min-width: 600px;
 	min-height: 300px;
 	background: var(--darkgrey);
 	border: 1px solid whitesmoke;
+	border-radius: 4px;
 	color: #eee;
 	font-size: 13px;
 	resize: none;
